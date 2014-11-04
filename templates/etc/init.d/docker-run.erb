@@ -49,6 +49,7 @@ start() {
     fi
 
     printf "Starting $prog:\t"
+    <% if @use_name %>docker rm -f <%= @name %><%end %>
     $docker run --cidfile=$cidfile -d=true \
         <% if @username %>-u '<%= @username %>' <% end %> \
         <% if @hostname %>-h '<%= @hostname %>'<% end %> \
