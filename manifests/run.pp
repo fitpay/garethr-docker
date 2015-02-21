@@ -23,6 +23,7 @@ define docker::run(
   $disable_network = false,
   $privileged = false,
   $extra_parameters = undef,
+  $add_hosts = [],
 ) {
   include docker::params
   $docker_command = $docker::params::docker_command
@@ -55,7 +56,8 @@ define docker::run(
   $links_array = any2array($links)
   $lxc_conf_array = any2array($lxc_conf)
   $extra_parameters_array = any2array($extra_parameters)
-
+  $add_hosts_array = any2array($add_hosts)
+  
   $sanitised_title = regsubst($title, '[^0-9A-Za-z.\-]', '-')
 
   $provider = $::operatingsystem ? {

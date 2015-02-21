@@ -80,6 +80,9 @@ start() {
             "--link #{link}" }.join(' ') %> \
         <% end %> \
         <% if @use_name %>--name <%= @name %><% end %> \
+        <% if @add_hosts %><% @add_hosts_array.each do |host| %>  \
+            --add-host <%= host %><% end %> \
+        <% end %>
         <% if @extra_parameters %><% @extra_parameters_array.each do |param| %>  \
             <%= param %> <% end %> \
         <% end -%> \
