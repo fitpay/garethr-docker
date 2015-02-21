@@ -44,7 +44,7 @@ ExecStart=/usr/bin/<%= @docker_command %> run \
         --name <%= @sanitised_title %> \
         <% if @add_hosts %><% @add_hosts_array.each do |host| %>  \
             --add-host <%= host %><% end %> \
-        <% end %>
+        <% end %> \
         <%= @image %> \
         <% if @extra_parameters %><% @extra_parameters_array.each do |param| %>  \
             <%= param %> <% end %> \
